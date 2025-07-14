@@ -16,4 +16,10 @@ export interface IBaseTypes {
   updated: string;
 }
 
+export interface IShowCase{
+  img?:string;
+  title?:string;
+  desc?:string;
+}
+
 export type IExpandType<K extends string> = Record<K, ILangTypes>;
