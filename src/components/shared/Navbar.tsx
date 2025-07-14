@@ -34,7 +34,7 @@ function Navbar() {
   };
 
   return (
-    <div>
+    <div  >
       <nav className=" min-[380px]:p-4 min-[1000px]:pt-12 pt-8 max-[400px]:pt-2">
         <div className="main-container flex items-center justify-between">
           <Link to="" className="text-2xl font-bold text-[#0062AD]">
