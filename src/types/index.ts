@@ -22,4 +22,11 @@ export interface IShowCase{
   desc?:string;
 }
 
+export interface IWhyUs{
+  icon?:string,
+  title?:string;
+  desc?:string;
+  color?:string;
+}
+
 export type IExpandType<K extends string> = Record<K, ILangTypes>;

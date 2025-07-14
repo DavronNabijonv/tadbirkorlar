@@ -22,7 +22,7 @@ function HomeHero() {
         </Button>
       </div>
 
-      <div className="py-10 pt-20">
+      <div className="py-10 pt-20 w-full">
         <Marquee
           direction="left"
           speed={80}
