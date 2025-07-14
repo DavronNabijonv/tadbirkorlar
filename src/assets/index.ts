@@ -6,6 +6,9 @@ export {default as img2} from './images/image2.png';
 export {default as img3} from './images/inage3.png';
 export {default as img4} from './images/image4.png';
 
+// Conatact image
+export {default as contactImage} from './images/homeContact.jpg';
+
 /* --------------------------------- Icons --------------------------------- */
 
 // country flags
