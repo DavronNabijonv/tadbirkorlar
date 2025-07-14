@@ -29,4 +29,9 @@ export interface IWhyUs{
   color?:string;
 }
 
+export interface ITitle{
+  title?:string;
+  desc?:string;
+}
+
 export type IExpandType<K extends string> = Record<K, ILangTypes>;
