@@ -45,6 +45,10 @@ export {default as w3} from './images/w3.mp4';
 export {default as w4} from './images/w4.mp4';
 export {default as w5} from './images/w5.mp4';
 
+// news images
+export {default as news_show} from './images/news_show.jpg';
+export {default as news_contact} from './images/news_contact.jpg';
+
 /* --------------------------------- Icons --------------------------------- */
 
 // country flags
