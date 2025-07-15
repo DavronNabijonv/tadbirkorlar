@@ -38,6 +38,13 @@ export {default as odamlar} from './images/odamlar.jpg';
 export {default as contact_show} from './images/contactshow.jpg';
 export {default as contact_main} from './images/contactmainimage.jpg';
 
+// videos
+export {default as w1} from './images/w1.mp4';
+export {default as w2} from './images/w2.mp4';
+export {default as w3} from './images/w3.mp4';
+export {default as w4} from './images/w4.mp4';
+export {default as w5} from './images/w5.mp4';
+
 /* --------------------------------- Icons --------------------------------- */
 
 // country flags
