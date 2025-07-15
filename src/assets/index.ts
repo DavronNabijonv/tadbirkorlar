@@ -48,4 +48,5 @@ export {default as jigarrang} from './icons/jigarrang.png';
 export {default as yashil} from './icons/yashil.png';
 export {default as kok} from './icons/kok.png';
 export {default as binafsha} from './icons/binafsha.png';
+export {default as logos} from './icons/hamkorlar.png';
 
