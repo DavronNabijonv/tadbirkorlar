@@ -82,7 +82,7 @@ export default function Contact({ imgContact }: { imgContact: string }) {
   }
 
   return (
-    <div className="mb-10 bg-[#F9F9FD] py-10">
+    <div className="mb-30 bg-[#F9F9FD] py-10">
       <div className="main-container">
         <div className="mb-15">
           <Title
@@ -91,7 +91,7 @@ export default function Contact({ imgContact }: { imgContact: string }) {
           />
         </div>
 
-        <div className="flex items-center justify-between gap-2">
+        <div className="flex max-[1200px]:flex-wrap items-center justify-between gap-2">
           <div className="w-full max-w-[600px]">
             <Form {...form}>
               <form
@@ -195,7 +195,7 @@ export default function Contact({ imgContact }: { imgContact: string }) {
             <img
               src={imgContact}
               alt="contact image"
-              className="h-[550px] max-w-[600px] rounded-[8px]"
+              className="h-[600px] max-w-[600px] rounded-[8px]"
             />
           </div>
         </div>
