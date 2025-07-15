@@ -15,6 +15,18 @@ export {default as about_contact} from './images/about-conatct.jpg';
 export {default as chance1} from './images/chance1.jpg';
 export {default as chance2} from './images/chance2.jpg';
 export {default as chance3} from './images/chance3.jpg';
+export {default as kal} from './images/kal.jpg';
+export {default as groupcol2} from './images/groupcol2.jpg';
+export {default as woman} from './images/women.jpg';
+export {default as majlis} from './images/majlis.jpg';
+export {default as doska} from './images/doska.jpg';
+export {default as galstuk} from './images/galstuk.jpg';
+export {default as handfoto} from './images/hand.jpg';
+export {default as tish} from './images/tish.jpg';
+export {default as teacher} from './images/teacher.jpg';
+export {default as workwith} from './images/workwith.jpg';
+export {default as grafik} from './images/grafik.jpg';
+export {default as brat} from './images/brat.jpg';
 
 
 /* --------------------------------- Icons --------------------------------- */
