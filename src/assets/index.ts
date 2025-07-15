@@ -34,6 +34,10 @@ export {default as tepakal} from './images/tepakal.png';
 export {default as oqstul} from './images/oqstul.jpg';
 export {default as odamlar} from './images/odamlar.jpg';
 
+// contact images
+export {default as contact_show} from './images/contactshow.jpg';
+export {default as contact_main} from './images/contactmainimage.jpg';
+
 /* --------------------------------- Icons --------------------------------- */
 
 // country flags
@@ -59,4 +63,13 @@ export {default as logos} from './icons/hamkorlar.png';
 export {default as port} from './icons/port.svg';
 export {default as store} from './icons/dokon.svg';
 export {default as kitob} from './icons/kitob.svg';
+
+// contact page icons
+export {default as comp} from './icons/comp.png';
+export {default as globus} from './icons/globus.png';
+export {default as messageContact} from './icons/message.png';
+export {default as plus} from './icons/plus.png';
+export {default as right} from './icons/right.png';
+export {default as left} from './icons/left.png';
+
 
