@@ -34,4 +34,10 @@ export interface ITitle{
   desc?:string;
 }
 
+export interface IChanceIcon {
+  icon?:string;
+  title?:string;
+  desc?:string;
+}
+
 export type IExpandType<K extends string> = Record<K, ILangTypes>;

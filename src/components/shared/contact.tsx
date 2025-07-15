@@ -91,7 +91,7 @@ export default function Contact({ imgContact }: { imgContact: string }) {
           />
         </div>
 
-        <div className="flex max-[1200px]:flex-wrap items-center justify-between gap-2">
+        <div className="flex max-[1200px]:flex-wrap items-center min-[1200px]:justify-between justify-center min-[1200px]:gap-2 gap-8">
           <div className="w-full max-w-[600px]">
             <Form {...form}>
               <form
@@ -191,11 +191,11 @@ export default function Contact({ imgContact }: { imgContact: string }) {
             </Form>
           </div>
 
-          <div>
+          <div className="lg:flex hidden" >
             <img
               src={imgContact}
               alt="contact image"
-              className="h-[600px] max-w-[600px] rounded-[8px]"
+              className="h-[600px] max-w-[600px] rounded-[8px] object-cover object-left-top"
             />
           </div>
         </div>

@@ -34,8 +34,8 @@ function Navbar() {
   };
 
   return (
-    <div  >
-      <nav className=" min-[380px]:p-4 min-[1000px]:pt-12 pt-8 max-[400px]:pt-2">
+    <div className="absolute top-0 left-0 z-10 w-full " >
+      <nav className=" min-[380px]:p-4 min-[1000px]:pt-12 pt-8 max-[400px]:pt-2 bg-none ">
         <div className="main-container flex items-center justify-between">
           <Link to="" className="text-2xl font-bold text-[#0062AD]">
             {t.navbar.logoText}
