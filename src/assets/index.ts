@@ -28,6 +28,11 @@ export {default as workwith} from './images/workwith.jpg';
 export {default as grafik} from './images/grafik.jpg';
 export {default as brat} from './images/brat.jpg';
 
+// event images
+export {default as eventShow} from './images/eventshowcase.jpg';
+export {default as tepakal} from './images/tepakal.png';
+export {default as oqstul} from './images/oqstul.jpg';
+export {default as odamlar} from './images/odamlar.jpg';
 
 /* --------------------------------- Icons --------------------------------- */
 
@@ -49,4 +54,9 @@ export {default as yashil} from './icons/yashil.png';
 export {default as kok} from './icons/kok.png';
 export {default as binafsha} from './icons/binafsha.png';
 export {default as logos} from './icons/hamkorlar.png';
+
+// event iocons
+export {default as port} from './icons/port.svg';
+export {default as store} from './icons/dokon.svg';
+export {default as kitob} from './icons/kitob.svg';
 
