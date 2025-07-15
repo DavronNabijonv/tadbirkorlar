@@ -69,7 +69,7 @@ export const uz = {
       getInTouch: "Aloqaga chiqish",
       details: "Batafsil",
       readMore: "Ko'proq o'qish",
-      sendMessage: "Xabar yuborish",
+      sendMessage: "Yuborish",
       freeQuote: "Bepul taklif oling",
     },
 };

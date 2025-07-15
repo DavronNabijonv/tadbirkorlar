@@ -7,7 +7,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { toast } from "sonner";
+// import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "../ui/textarea";
 import { useForm } from "react-hook-form";
@@ -91,14 +91,17 @@ export default function Contact({ imgContact }: { imgContact: string }) {
           />
         </div>
 
-        <div className="flex flex-col gap-2">
-          <div className="w-1.5/2">
+        <div className="flex items-center justify-between gap-2">
+          <div className="w-full max-w-[600px]">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
-                className="w-full max-w-[577px] space-y-6 rounded-2xl bg-white p-[50px] max-[1100px]:max-w-full max-[850px]:max-w-full max-[850px]:px-8"
+                className="w-full space-y-2 rounded-2xl bg-white p-[30px] max-[1100px]:max-w-full max-[850px]:max-w-full max-[850px]:px-8"
               >
-                <div className="grid grid-cols-2 gap-[21px] max-[850px]:grid-cols-1">
+                <div className="grid grid-cols-1 gap-1 max-[850px]:grid-cols-1">
+                  <p className="text-[16px] font-[400] text-[#414D60]">
+                    Ism/Familya:
+                  </p>
                   <FormField
                     control={form.control}
                     name="firstName"
@@ -106,9 +109,8 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                       <FormItem>
                         <FormControl>
                           <Input
-                            placeholder={"t.contactsSection.firstName"}
                             {...field}
-                            className="contact-input"
+                            className="contact-input hover:border-[#0062AD]"
                             value={firstNameValue}
                             onChange={(e) => handleNameChange(e, "firstName")}
                             maxLength={20}
@@ -119,6 +121,9 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                     )}
                   />
                 </div>
+                <p className="mt-7 text-[16px] font-[400] text-[#414D60]">
+                  Telefon:
+                </p>
                 <FormField
                   control={form.control}
                   name="phone"
@@ -126,10 +131,10 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                     <FormItem>
                       <FormControl>
                         <Input
-                          placeholder={t.contactsSection.phone}
+                          placeholder={"+7 (___)___-__-__"}
                           {...field}
                           type="text"
-                          className="contact-input"
+                          className="contact-input hover:border-[#0062AD] "
                           value={phoneValue}
                           onChange={handlePhoneChange}
                         />
@@ -138,6 +143,9 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                     </FormItem>
                   )}
                 />
+                <p className="mt-7 text-[16px] font-[400] text-[#414D60]">
+                  E-mail:
+                </p>
                 <FormField
                   control={form.control}
                   name="email"
@@ -145,16 +153,19 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                     <FormItem>
                       <FormControl>
                         <Input
-                          placeholder={t.contactsSection.email}
                           {...field}
                           type="email"
-                          className="contact-input"
+                          className="contact-input hover:border-[#0062AD]"
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+                <p className="mt-7 text-[16px] font-[400] text-[#414D60]">
+                  Yuborish tugmasini bosish orqali siz Ma'lumotlarni qayta
+                  ishlash siyosatiga rozilik bildirasiz.
+                </p>
                 <FormField
                   control={form.control}
                   name="message"
@@ -162,9 +173,8 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                     <FormItem>
                       <FormControl>
                         <Textarea
-                          placeholder={t.contactsSection.message}
                           {...field}
-                          className="contact-input !h-[144px] resize-none py-5"
+                          className="contact-input !h-[144px] resize-none py-5 hover:border-[#0062AD]"
                         />
                       </FormControl>
                       <FormMessage />
@@ -173,7 +183,7 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                 />
                 <Button
                   type="submit"
-                  className="h-[60px] px-[30.5px] max-[400px]:w-full"
+                  className="px-[30.5px] py-5 max-[400px]:w-full font-[600] text-[18px] mt-5"
                 >
                   {t.buttons.sendMessage}
                 </Button>
@@ -185,7 +195,7 @@ export default function Contact({ imgContact }: { imgContact: string }) {
             <img
               src={imgContact}
               alt="contact image"
-              className="w-0.5/2 h-[742px] rounded-[8px]"
+              className="h-[550px] max-w-[600px] rounded-[8px]"
             />
           </div>
         </div>
