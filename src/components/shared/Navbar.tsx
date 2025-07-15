@@ -16,7 +16,7 @@ import {
 import { motion } from "framer-motion"; // <-- Tuzatildi
 import { useTranslations } from "@/hooks/useTranslations";
 import { useState } from "react";
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Menu } from "lucide-react"; // <-- Hamburger menyusi uchun
 
 function Navbar() {
@@ -43,36 +43,48 @@ function Navbar() {
 
           <ul className="hidden flex-row space-x-6 lg:flex">
             <li>
-              <Link
+              <NavLink
                 to={`/${lang}/about`}
-                className="hover:text-lightBlue text-[18px] font-medium text-[#272F3A]"
+                className={({ isActive }) =>
+                  `hover:text-[#0062AD] text-[18px] font-medium text-[#272F3A] ${
+                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5" : ""
+                  }`}
               >
                 {t.navbar.about}
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to={`/${lang}/events`}
-                className="hover:text-lightBlue text-[18px] font-medium text-[#272F3A]"
+                className={({ isActive }) =>
+                  `hover:text-[#0062AD] text-[18px] font-medium text-[#272F3A] ${
+                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5" : ""
+                  }`}
               >
                 {t.navbar.event}
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to={`/${lang}/news`}
-                className="hover:text-lightBlue text-[18px] font-medium text-[#272F3A]"
+                className={({ isActive }) =>
+                  `hover:text-[#0062AD] text-[18px] font-medium text-[#272F3A] ${
+                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5" : ""
+                  }`}
               >
                 {t.navbar.news}
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to={`/${lang}/contacts`}
-                className="hover:text-lightBlue text-[18px] font-medium text-[#272F3A]"
+                className={({ isActive }) =>
+                  `hover:text-[#0062AD] text-[18px] font-medium text-[#272F3A] ${
+                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5" : ""
+                  }`}
               >
                 {t.navbar.contact}
-              </Link>
+              </NavLink>
             </li>
           </ul>
 
