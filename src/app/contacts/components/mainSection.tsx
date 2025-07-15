@@ -1,7 +1,6 @@
 import { comp, contact_main, globus, left, message, plus, right } from "@/assets";
 import Title from "@/components/shared/Title";
 import { useTranslations } from "@/hooks/useTranslations";
-import { useTransition } from "react";
 
 export default function MainSection() {
     const t = useTranslations()
