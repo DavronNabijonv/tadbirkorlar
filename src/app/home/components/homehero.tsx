@@ -4,7 +4,7 @@ import Marquee from "react-fast-marquee";
 
 function HomeHero() {
   return (
-    <div className="flex flex-col items-center justify-center gap-4 py-15">
+    <div className="flex flex-col items-center justify-center gap-4 py-15 mt-50 ">
       <p className="w-full max-w-[950px] text-center text-[30px] font-medium text-[#002B6B] sm:text-[45px] lg:text-[72px]">
         “Yangi Biznes Diplomatiyasiga Qo‘shiling”
       </p>
@@ -22,7 +22,7 @@ function HomeHero() {
         </Button>
       </div>
 
-      <div className="py-10 pt-20 w-full">
+      <div className="py-10 pt-50 w-full">
         <Marquee
           direction="left"
           speed={80}
