@@ -9,10 +9,20 @@ function AboutPage() {
   return (
     <>
       <ShowCaseAbout />
-      <Chance/>
-      <Photo/>
-      <PartnerLogo/>
-      <div className="mt-10" >
+
+      <div id="chance">
+        <Chance />
+      </div>
+
+      <div id="photo">
+        <Photo />
+      </div>
+
+      <div id="logos">
+        <PartnerLogo />
+      </div>
+
+      <div id="about_contact" className="mt-10">
         <Contact imgContact={about_contact} />
       </div>
     </>

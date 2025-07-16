@@ -1,10 +1,12 @@
 import { img1, img2, img3, img4 } from "@/assets";
 import { Button } from "@/components/ui/button";
 import Marquee from "react-fast-marquee";
+import { Link, useParams } from "react-router-dom";
 
 function HomeHero() {
+  const { lang } = useParams();
   return (
-    <div className="flex flex-col items-center justify-center gap-4 py-15 mt-50 ">
+    <div className="mt-50 flex flex-col items-center justify-center gap-4 py-15">
       <p className="w-full max-w-[950px] text-center text-[30px] font-medium text-[#002B6B] sm:text-[45px] lg:text-[72px]">
         “Yangi Biznes Diplomatiyasiga Qo‘shiling”
       </p>
@@ -14,15 +16,19 @@ function HomeHero() {
       </p>
 
       <div className="flex w-full items-center justify-center gap-3 pt-5 max-[750px]:flex-wrap">
-        <Button className="w-full max-w-[305px] hover:border-1 hover:border-[#848D9B] hover:bg-white hover:text-[#848D9B]">
-          Batafsil o'rganish
-        </Button>
-        <Button className="w-full max-w-[305px] border-1 border-[#848D9B] bg-white text-[#848D9B] hover:border-0 hover:bg-[#0062AD] hover:text-white">
-          Qo'shilish
-        </Button>
+        <a href="#home_contact">
+          <Button className="w-[305px] hover:border-1 hover:border-[#848D9B] hover:bg-white hover:text-[#848D9B]">
+            Batafsil o'rganish
+          </Button>
+        </a>
+        <Link to={`/${lang}/contacts`}>
+          <Button className="w-[305px] border-1 border-[#848D9B] bg-white text-[#848D9B] hover:border-0 hover:bg-[#0062AD] hover:text-white">
+            Qo'shilish
+          </Button>
+        </Link>
       </div>
 
-      <div className="py-10 pt-50 w-full">
+      <div className="w-full py-10 pt-50">
         <Marquee
           direction="left"
           speed={80}
