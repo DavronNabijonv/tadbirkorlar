@@ -46,8 +46,8 @@ function Navbar() {
               <NavLink
                 to={`/${lang}/about`}
                 className={({ isActive }) =>
-                  `hover:text-[#0062AD] text-[18px] font-medium text-[#272F3A] ${
-                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5" : ""
+                  `text-[18px] font-medium text-[#272F3A] ${
+                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5 hover:text-white" : "hover:text-[#0062AD]"
                   }`}
               >
                 {t.navbar.about}
@@ -57,8 +57,8 @@ function Navbar() {
               <NavLink
                 to={`/${lang}/events`}
                 className={({ isActive }) =>
-                  `hover:text-[#0062AD] text-[18px] font-medium text-[#272F3A] ${
-                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5" : ""
+                  ` text-[18px] font-medium text-[#272F3A] ${
+                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5 hover:text-white" : "hover:text-[#0062AD]"
                   }`}
               >
                 {t.navbar.event}
@@ -68,8 +68,8 @@ function Navbar() {
               <NavLink
                 to={`/${lang}/news`}
                 className={({ isActive }) =>
-                  `hover:text-[#0062AD] text-[18px] font-medium text-[#272F3A] ${
-                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5" : ""
+                  ` text-[18px] font-medium text-[#272F3A] ${
+                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5 hover:bg-none hover:text-white" : "hover:text-[#0062AD]"
                   }`}
               >
                 {t.navbar.news}
@@ -79,8 +79,8 @@ function Navbar() {
               <NavLink
                 to={`/${lang}/contacts`}
                 className={({ isActive }) =>
-                  `hover:text-[#0062AD] text-[18px] font-medium text-[#272F3A] ${
-                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5" : ""
+                  ` text-[18px] font-medium text-[#272F3A] ${
+                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5 hover:text-white" : "hover:text-[#0062AD]"
                   }`}
               >
                 {t.navbar.contact}
