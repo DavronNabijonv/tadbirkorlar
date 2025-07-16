@@ -1,7 +1,8 @@
 import { w1, w2, w3, w4, w5, w6, w7, w8, w9 } from "@/assets";
 import Title from "@/components/shared/Title";
 import Videos from "@/components/shared/videos";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import { CiPlay1 } from "react-icons/ci";
 
 const videoNews: {
   videos: string;
@@ -67,6 +68,7 @@ const videoNews: {
 
 export default function NewsEvents() {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [visibility ,setVisibility] = useState<number | null>(null);
 
   const handlePlay = (index: number) => {
     videoRefs.current.forEach((video, i) => {
@@ -74,8 +76,10 @@ export default function NewsEvents() {
         if (i === index) {
           if (video.paused) {
             video.play();
+            setVisibility(index);
           } else {
             video.pause();
+            setVisibility(null)
           }
         } else {
           video.pause();
@@ -85,7 +89,7 @@ export default function NewsEvents() {
   };
 
   return (
-    <div className="my-20" >
+    <div className="my-20">
       <Title
         title="Bizning Tadbirlarimiz"
         desc="“Business Diplomatia” platformasi dunyo bo‘ylab faoliyat yuritayotgan ishonchli tashkilotlar, universitetlar, kompaniyalar va inkubatsion markazlar bilan hamkorlikda ishlaydi."
@@ -104,6 +108,9 @@ export default function NewsEvents() {
                 setRef={(el) => (videoRefs.current[index] = el)}
                 onPlay={() => handlePlay(index)}
               />
+              <button onClick={()=>handlePlay(index)} className={`absolute top-[40%] left-[40%] z-10 rounded-[100%] bg-[#0062AD] p-3 text-[30px] text-white ${visibility === index ? 'opacity-10':'opacity-100'}`}>
+                <CiPlay1 />
+              </button>
             </div>
             <p className="w-full text-center text-[24px] font-[500] text-[#1E242C]">
               {item.title}
