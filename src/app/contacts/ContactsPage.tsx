@@ -1,4 +1,5 @@
 import ContactShow from "./components/contactShow";
+import FormPart from "./components/formPart";
 import MainSection from "./components/mainSection";
 
 function ContactsPage() {
@@ -6,6 +7,7 @@ function ContactsPage() {
     <>
       <ContactShow />
       <MainSection/>
+      <FormPart/>
     </>
   );
 }

@@ -62,13 +62,47 @@ export const eng = {
       "Dear customer! If you have a cooperation proposal, question or request, please fill out the form. The Leader Impex team will carefully consider your request and contact you shortly.",
   },
 
-   // Buttons
-   buttons: {
+  // Buttons
+  buttons: {
     contact: "Contact",
     getInTouch: "Get in touch",
     details: "Details",
     readMore: "Read more",
     sendMessage: "Send message",
     freeQuote: "Get a Free Quote",
+  },
+
+  toast: {
+    success: {
+      contacts: "Your message has been sent successfully!",
+    },
+
+    error: {
+      contacts: "An error occurred. Please try again!",
+    },
+  },
+
+  contactsPage: {
+    form: {
+      title: {
+        firstName: "Ism",
+        lastName: "Familya",
+        phone: "Telefon raqam",
+        emial:"Email",
+        message: "Xabar",
+        location:"Manzil"
+      },
+
+      placeholders: {
+        firstName: "Ismingizni kiriting",
+        lastName: "Familyangizni kiriting",
+        location: "Manzilingizni kiriting",
+        phone: "Telefon raqamingizni kiriting",
+        email:'Emailingizni kiriting',
+        message: "Xabar qoldiring",
+      },
+    },
+
+    privacy: "Barcha ma'lumotlarni tasdiqlayman",
   },
 };

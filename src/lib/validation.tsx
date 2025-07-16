@@ -25,9 +25,8 @@ export const ContactPageSchema = () => {
     firstName: z.string().min(3, { message: t.validation.firstName }),
     lastName: z.string().min(3, { message: t.validation.lastName }),
     phone: z.string().min(9, { message: t.validation.phone }),
-    company: z.string().min(3, { message: t.validation.company }),
-    from: z.string().min(5, { message: t.validation.location }),
-    to: z.string().min(5, { message: t.validation.location }),
+    email:z.string().min(10,{message:t.validation.email}) ,
+    location:z.string().min(3,{message:t.validation.location}),
     message: z
       .string()
       .min(5, { message: t.validation.messageMin })

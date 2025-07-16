@@ -15,6 +15,9 @@ import { ContactsSchema } from "@/lib/validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "@/hooks/useTranslations";
 import { z } from "zod";
+import sendTelegramMessage from "@/lib/telegram/sendTelegramMessage2";
+import api from "@/api/api";
+import { toast } from "sonner";
 
 export default function Contact({ imgContact }: { imgContact: string }) {
   const t = useTranslations();
@@ -24,7 +27,6 @@ export default function Contact({ imgContact }: { imgContact: string }) {
     resolver: zodResolver(ContactsFormSchema),
     defaultValues: {
       firstName: "",
-      lastName: "",
       email: "",
       phone: "",
       message: "",
@@ -33,6 +35,7 @@ export default function Contact({ imgContact }: { imgContact: string }) {
 
   const firstNameValue = form.watch("firstName");
   const phoneValue = form.watch("phone");
+  const emialValue = form.watch("email");
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
@@ -43,20 +46,36 @@ export default function Contact({ imgContact }: { imgContact: string }) {
 
   const handleNameChange = (
     e: React.ChangeEvent<HTMLInputElement>,
-    val: "firstName" | "lastName",
+    val: "firstName", // faqat firstName
   ) => {
     const value = e.target.value.replace(/[^A-Za-z\s]/g, "");
     if (value.length > 15) return;
     form.setValue(val, value);
   };
 
+  const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+  
+    // Faqat ruxsat berilgan belgilarni qoldiramiz: harf, raqam, @, ., -, _
+    value = value.replace(/[^a-zA-Z0-9@._-]/g, "");
+  
+    // Uzunlik chegarasi (ixtiyoriy)
+    if (value.length > 50) return;
+  
+    // formga set qilamiz
+    form.setValue("email", value);
+  };
+  
+
   async function onSubmit(values: z.infer<typeof ContactsFormSchema>) {
-    const { firstName, lastName, email, phone, message } = values;
+    console.log('dfvsdf');
+    
+    const { firstName, email, phone, message } = values;
 
     const telegramMessage = `
       <b>📩 Yangi Aloqa Formasi</b>
 
-👤 <b>Ism:</b> ${firstName} ${lastName}
+👤 <b>Ism:</b> ${firstName} 
 📧 <b>Email:</b> ${email}
 📞 <b>Telefon:</b> ${phone}
 📝 <b>Xabar:</b> ${message || "Yo'q"}
@@ -64,21 +83,20 @@ export default function Contact({ imgContact }: { imgContact: string }) {
 
     const formData = {
       first_name: firstName,
-      last_name: lastName,
       phone_number: phone,
       email,
       message,
     };
 
-    // try {
-    //   await api.post("/api/collections/contact_us/records", formData);
-    //   await sendTelegramMessage(telegramMessage);
-    //   form.reset();
-    //   toast.success(`${t.toast.success.contacts}`);
-    // } catch (error) {
-    //   console.log(error);
-    //   toast.error(`${t.toast.error.contacts}`);
-    // }
+    try {
+      await api.post("/api/collections/contact_us/records", formData);
+      await sendTelegramMessage(telegramMessage);
+      form.reset();
+      toast.success(`${t.toast.success.contacts}`);
+    } catch (error) {
+      console.log(error);
+      toast.error(`${t.toast.error.contacts}`);
+    }
   }
 
   return (
@@ -154,6 +172,8 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                       <FormControl>
                         <Input
                           {...field}
+                          value={emialValue}
+                          onChange={handleEmailChange}
                           type="email"
                           className="contact-input hover:border-[#0062AD]"
                         />
@@ -183,6 +203,7 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                 />
                 <Button
                   type="submit"
+                  onClick={form.handleSubmit(onSubmit)}
                   className="px-[30.5px] py-5 max-[400px]:w-full font-[600] text-[18px] mt-5"
                 >
                   {t.buttons.sendMessage}

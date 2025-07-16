@@ -63,13 +63,47 @@ export const uz = {
       "Hurmatli mijoz! Hamkorlik taklifi, savol yoki murojaatingiz bo‘lsa, iltimos, formani to‘ldiring. Leader Impex jamoasi sizning murojaatingizni diqqat bilan ko‘rib chiqadi va qisqa vaqt ichida siz bilan bog‘lanadi.",
   },
 
-    // Buttons
-    buttons: {
-      contact: "Bog'lanish",
-      getInTouch: "Aloqaga chiqish",
-      details: "Batafsil",
-      readMore: "Ko'proq o'qish",
-      sendMessage: "Yuborish",
-      freeQuote: "Bepul taklif oling",
+  // Buttons
+  buttons: {
+    contact: "Bog'lanish",
+    getInTouch: "Aloqaga chiqish",
+    details: "Batafsil",
+    readMore: "Ko'proq o'qish",
+    sendMessage: "Xabarni jo'nating",
+    freeQuote: "Bepul taklif oling",
+  },
+
+  toast: {
+    success: {
+      contacts: "Xabaringiz muvaffaqiyatli yuborildi!",
     },
+
+    error: {
+      contacts: "Xatolik yuz berdi. Iltimos, qayta urinib ko'ring!",
+    },
+  },
+
+  contactsPage: {
+    form: {
+      title: {
+        firstName: "Ism",
+        lastName: "Familya",
+        phone: "Telefon raqam",
+        emial:"Email",
+        message: "Xabar",
+        location:"Manzil"
+      },
+
+      placeholders: {
+        firstName: "Ismingizni kiriting",
+        lastName: "Familyangizni kiriting",
+        location: "Manzilingizni kiriting",
+        phone: "Telefon raqamingizni kiriting",
+        email:'Emailingizni kiriting',
+        message: "Xabar qoldiring",
+      },
+    },
+
+    privacy: "Barcha ma'lumotlarni tasdiqlayman",
+  },
 };

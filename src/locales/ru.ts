@@ -37,8 +37,7 @@ export const ru = {
     conatact: "Контакты",
     consulting: "Консалтинговое агентство для вашего бизнеса",
     consultingDesc: "",
-    police:
-      "Создано с любовью Figmaland. Все права защищены",
+    police: "Создано с любовью Figmaland. Все права защищены",
   },
 
   validation: {
@@ -73,4 +72,37 @@ export const ru = {
     freeQuote: "Получить бесплатное предложение",
   },
 
+  toast: {
+    success: {
+      contacts: "Ваше сообщение успешно отправлено!",
+    },
+
+    error: {
+      contacts: "Произошла ошибка. Попробуйте еще раз!",
+    },
+  },
+
+  contactsPage: {
+    form: {
+      title: {
+        firstName: "Ism",
+        lastName: "Familya",
+        phone: "Telefon raqam",
+        emial:"Email",
+        message: "Xabar",
+        location:"Manzil"
+      },
+
+      placeholders: {
+        firstName: "Ismingizni kiriting",
+        lastName: "Familyangizni kiriting",
+        location: "Manzilingizni kiriting",
+        phone: "Telefon raqamingizni kiriting",
+        email:'Emailingizni kiriting',
+        message: "Xabar qoldiring",
+      },
+    },
+
+    privacy: "Barcha ma'lumotlarni tasdiqlayman",
+  },
 };
