@@ -52,6 +52,12 @@ export {default as w9} from './images/music1.mp4';
 // news images
 export {default as news_show} from './images/news_show.jpg';
 export {default as news_contact} from './images/news_contact.jpg';
+export {default as n1} from './images/n1.jpg';
+export {default as n2} from './images/n2.jpg';
+export {default as n3} from './images/n3.png';
+export {default as n4} from './images/n4.png';
+export {default as n5} from './images/n5.png';
+export {default as n6} from './images/n6.jpg';
 
 /* --------------------------------- Icons --------------------------------- */
 
