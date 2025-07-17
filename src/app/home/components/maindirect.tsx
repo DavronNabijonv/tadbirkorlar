@@ -8,6 +8,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Title from "@/components/shared/Title";
+import './home.css';
 
 
 const videoData = [
@@ -70,16 +71,15 @@ export default function Maindirect() {
           }}
           onSwiper={setSwiper}
           breakpoints={{
-            640: { slidesPerView: 2 },
-            1000: { slidesPerView: 3 },
+            800: { slidesPerView: 2 },
+            1200: { slidesPerView: 3 },
           }}
           modules={[Navigation]}
-          centeredSlides={true}
-          className="h-[500px]"
+          className=" home_swiper h-[500px] max-sm:h-[400px] flex items-center justify-center gap-10 "
         >
           {videoData.map((item, index) => (
-            <SwiperSlide key={index} className="flex justify-center max-sm:ml-[5%] ml-8">
-              <div className="relative h-[480px] w-[350px]">
+            <SwiperSlide key={index} className="flex justify-center ">
+              <div className="relative h-[480px] w-[350px] max-sm:w-[280px] max-sm:h-[400px] ">
                 <div className="absolute h-full w-full overflow-hidden rounded-xl">
                   <Videos
                     index={index}

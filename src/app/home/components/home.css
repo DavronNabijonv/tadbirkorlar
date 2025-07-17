@@ -1,0 +1,35 @@
+.swiper .swiper-wrapper{
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    margin-left: 5.5%;
+}
+
+@media(max-width:800px){
+    .swiper .swiper-wrapper{
+        margin-left: 25%;
+    }
+}
+
+@media(max-width:490px){
+    .swiper .swiper-wrapper{
+        gap: 0px;
+        margin-left: 18%;
+    }
+}
+
+@media(max-width:400px){
+    .swiper .swiper-wrapper{
+        gap: 0px;
+        margin-left: 8%;
+    }
+}
+
+@media(max-width:320px){
+    .swiper .swiper-wrapper{
+        gap: 0px;
+        margin-left: 2%;
+    }
+}
