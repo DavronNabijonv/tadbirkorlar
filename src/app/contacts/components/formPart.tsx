@@ -19,8 +19,8 @@ import { useTranslations } from "@/hooks/useTranslations";
 import { ContactPageSchema } from "@/lib/validation";
 import { sendTelegramMessage } from "@/lib/telegram/sendTelegramMessage";
 import { toast } from "sonner";
-import api from "@/api/api";
 import Title from "@/components/shared/Title";
+// import api from "@/api/api";
 
 function FormPart() {
   const ContactsSchema = ContactPageSchema();
@@ -96,14 +96,14 @@ function FormPart() {
 ✅ <b>Maxfiylik Roziligi:</b> ${privacy ? "Ha" : "Yo‘q"}
     `;
 
-    const formData = {
-      first_name: firstName,
-      last_name: lastName,
-      phone_number: phone,
-      email: email,
-      location: location,
-      message,
-    };
+    // const formData = {
+    //   first_name: firstName,
+    //   last_name: lastName,
+    //   phone_number: phone,
+    //   email: email,
+    //   location: location,
+    //   message,
+    // };
 
     try {
       // await api.post("/api/collections/contact_us/records", formData);
