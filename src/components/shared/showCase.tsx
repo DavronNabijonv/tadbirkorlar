@@ -2,17 +2,17 @@ import type { IShowCase } from "@/types";
 import { Link, useParams } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
-export default function ShowCase({ title, desc, img }: IShowCase) {
+export default function ShowCase({ title, desc, img , justify_value }: IShowCase) {
   const { lang } = useParams();
   return (
     <div
-      className="-bg-[position:0px_100px] h-[800px] bg-cover bg-no-repeat max-lg:bg-center"
+      className={`-bg-[position:0px_100px] h-[800px] bg-cover bg-no-repeat max-lg:bg-center flex items-start ${justify_value}`}
       style={{
         backgroundImage: `url(${img})`,
         mixBlendMode: "multiply",
       }}
     >
-      <div className="inset-0 flex w-full max-w-[100%] flex-col items-center justify-center pt-[15%] max-[800px]:pt-[30%] min-[1000px]:max-w-[800px] min-lg:ml-[7%]">
+      <div className="inset-0 flex w-full max-w-[100%] flex-col items-center justify pt-[15%] max-[800px]:pt-[30%] min-[1000px]:max-w-[800px] min-lg:ml-[7%]">
         <p className="font-urbanist w-full max-w-[600px] text-center text-[47px] text-[#1E242C]">
           {title}
         </p>

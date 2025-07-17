@@ -6,6 +6,7 @@ export default function NewsShow() {
     <div>
       <ShowCase
         img={news_show}
+        justify_value="justify-end"
         title="Biznes Diplomatik Yangiliklar"
         desc="Biznes diplomatiyasi yo‘nalishidagi tadbirlar – bu yangi bosqichlarga yo‘l ochuvchi muloqot maydonlari."
       />

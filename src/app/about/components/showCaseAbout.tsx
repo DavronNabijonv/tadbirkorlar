@@ -6,6 +6,7 @@ export default function ShowCaseAbout() {
     <div>
       <ShowCase
         img={about_show}
+        justify_value="justify-start"
         title="Biz Haqimizda Bilishni Hohlaysizmi"
         desc=" Bu xalqaro biznes aloqalarini mustahkamlovchi, madaniy va iqtisodiy hamkorlikka yo‘l ochuvchi raqamli platforma."
       />

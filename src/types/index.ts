@@ -20,6 +20,7 @@ export interface IShowCase{
   img?:string;
   title?:string;
   desc?:string;
+  justify_value?:string;
 }
 
 export interface IWhyUs{
