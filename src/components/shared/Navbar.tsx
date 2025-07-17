@@ -119,7 +119,7 @@ function Navbar() {
                 }}
               >
                 <SelectTrigger
-                  className="mt-0 w-[105px] cursor-pointer rounded-[26px] border-1 border-[#EFEFEF] px-3 py-1 text-[18px] text-black shadow-none ring-0 focus-visible:ring-0"
+                  className="mt-0 w-[115px] cursor-pointer rounded-[26px] border-1 border-[#EFEFEF] px-3 py-1 text-[18px] text-black shadow-none "
                   downIconClasses="text-black"
                 >
                   <SelectValue />

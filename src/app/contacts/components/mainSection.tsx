@@ -13,18 +13,18 @@ export default function MainSection() {
         />
       </div>
 
-      <div className="relative mt-30 flex h-[700px] w-full items-center justify-center">
+      <div className="relative mt-30 flex min-[850px]:h-[700px] h-[900px] w-full items-center justify-center">
         {/* back circles */}
-        <div className="flex h-full max-h-[636px] w-full max-w-[636px] items-center justify-center rounded-[100%] bg-[#B0D0FF] opacity-30">
-          <div className="flex h-full max-h-[532px] w-full max-w-[532px] items-center justify-center rounded-[100%] bg-[#8AB9FF]">
-            <div className="h-full max-h-[408px] w-full max-w-[408px] rounded-[100%] bg-[#0066FF]"></div>
+        <div className=" hidden sm:flex h-full md:max-h-[636px] max-h-[400px] w-full md:max-w-[636px] max-w-[400px] items-center justify-center rounded-[100%] bg-[#B0D0FF] opacity-30">
+          <div className="flex h-full md:max-h-[532px] max-h-[320px] w-full md:max-w-[532px] max-w-[320px] items-center justify-center rounded-[100%] bg-[#8AB9FF]">
+            <div className="h-full md:max-h-[408px] max-h-[250px] w-full md:max-w-[408px] max-w-[250px] rounded-[100%] bg-[#0066FF]"></div>
           </div>
         </div>
 
         {/* main image */}
-        <div className="absolute right-0 left-0 z-10 flex h-[550px] w-full items-center justify-center">
+        <div className="absolute right-0 left-0 z-10 flex md:h-[550px] h-[350px] w-full items-center justify-center">
           <div
-            className="h-full w-[350px] rounded-xl bg-cover bg-center bg-no-repeat object-cover"
+            className="h-full md:w-[350px] w-[300px] rounded-xl bg-cover md:bg-center bg-top bg-no-repeat object-cover"
             style={{
               backgroundImage: `url(${contact_main})`,
               mixBlendMode: "multiply",
@@ -35,9 +35,9 @@ export default function MainSection() {
         </div>
 
         {/* right part */}
-        <div className="absolute top-20 right-30 z-20 flex w-[260px] flex-col items-start justify-baseline gap-5">
+        <div className="absolute min-[850px]:top-20 md:-top-[100px] -top-[50px] min-[1100px]:right-30 right-0 z-20 flex w-[260px] flex-col items-start justify-baseline gap-5">
 
-          <img src={right} alt="right icons" className="" />
+          <img src={right} alt="right icons" className="min-[850px]:flex hidden"  />
 
           <div className="flex items-center gap-2 rounded-[20px] bg-white p-5 shadow-xl/30">
             <img src={message} alt="message icon" className="" />
@@ -58,7 +58,7 @@ export default function MainSection() {
         </div>
 
         {/* left part */}
-        <div className="absolute bottom-20 left-30 z-20 flex w-[260px] flex-col items-end justify-baseline gap-5">
+        <div className="absolute min-[850px]:bottom-20 md:-bottom-[100px] bottom-0 min-[1100px]:left-30 left-0 z-20 flex w-[260px] flex-col items-end justify-baseline gap-5">
 
         <div className="flex flex-col items-center gap-2 rounded-[20px] bg-white p-5 shadow-xl/30" >
             <img src={comp} alt="message icon" className="" />
@@ -76,7 +76,7 @@ export default function MainSection() {
             </p>
           </div>
 
-          <img src={left} alt="right icons" className="" />
+          <img src={left} alt="right icons" className="min-[850px]:flex hidden" />
 
         </div>
 
