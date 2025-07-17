@@ -6,7 +6,7 @@ import { Link, useParams } from "react-router-dom";
 function HomeHero() {
   const { lang } = useParams();
   return (
-    <div className="mt-50 flex flex-col items-center justify-center gap-4 py-15">
+    <div className="pt-50 flex flex-col items-center justify-center gap-4 py-15">
       <p className="w-full max-w-[950px] text-center text-[30px] font-medium text-[#002B6B] sm:text-[45px] lg:text-[72px]">
         “Yangi Biznes Diplomatiyasiga Qo‘shiling”
       </p>

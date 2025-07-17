@@ -16,7 +16,13 @@ import {
 import { motion } from "framer-motion"; // <-- Tuzatildi
 import { useTranslations } from "@/hooks/useTranslations";
 import { useState } from "react";
-import { Link, NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import { Menu } from "lucide-react"; // <-- Hamburger menyusi uchun
 
 function Navbar() {
@@ -34,10 +40,13 @@ function Navbar() {
   };
 
   return (
-    <div className="absolute top-0 left-0 z-10 w-full " >
-      <nav className=" min-[380px]:p-4 min-[1000px]:pt-12 pt-8 max-[400px]:pt-2 bg-none ">
-        <div className="main-container flex items-center justify-between">
-          <Link to="" className="text-2xl font-bold text-[#0062AD]">
+    <div className="absolute top-0 left-0 z-10 w-full">
+      <nav className="bg-none pt-8 max-[400px]:pt-2 min-[380px]:p-4 min-[1000px]:pt-12">
+        <div className="main-container flex items-center justify-between max-sm:p-2">
+          <Link
+            to=""
+            className="text-[16px] font-bold text-[#0062AD] sm:text-xl"
+          >
             {t.navbar.logoText}
           </Link>
 
@@ -47,8 +56,11 @@ function Navbar() {
                 to={`/${lang}/about`}
                 className={({ isActive }) =>
                   `text-[18px] font-medium text-[#272F3A] ${
-                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5 hover:text-white" : "hover:text-[#0062AD]"
-                  }`}
+                    isActive
+                      ? "rounded-[25px] bg-[#0062AD] px-5 py-2 text-white hover:text-white"
+                      : "hover:text-[#0062AD]"
+                  }`
+                }
               >
                 {t.navbar.about}
               </NavLink>
@@ -57,9 +69,12 @@ function Navbar() {
               <NavLink
                 to={`/${lang}/events`}
                 className={({ isActive }) =>
-                  ` text-[18px] font-medium text-[#272F3A] ${
-                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5 hover:text-white" : "hover:text-[#0062AD]"
-                  }`}
+                  `text-[18px] font-medium text-[#272F3A] ${
+                    isActive
+                      ? "rounded-[25px] bg-[#0062AD] px-5 py-2 text-white hover:text-white"
+                      : "hover:text-[#0062AD]"
+                  }`
+                }
               >
                 {t.navbar.event}
               </NavLink>
@@ -68,9 +83,12 @@ function Navbar() {
               <NavLink
                 to={`/${lang}/news`}
                 className={({ isActive }) =>
-                  ` text-[18px] font-medium text-[#272F3A] ${
-                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5 hover:bg-none hover:text-white" : "hover:text-[#0062AD]"
-                  }`}
+                  `text-[18px] font-medium text-[#272F3A] ${
+                    isActive
+                      ? "rounded-[25px] bg-[#0062AD] px-5 py-2 text-white hover:bg-none hover:text-white"
+                      : "hover:text-[#0062AD]"
+                  }`
+                }
               >
                 {t.navbar.news}
               </NavLink>
@@ -79,9 +97,12 @@ function Navbar() {
               <NavLink
                 to={`/${lang}/contacts`}
                 className={({ isActive }) =>
-                  ` text-[18px] font-medium text-[#272F3A] ${
-                    isActive ? "rounded-[25px]  bg-[#0062AD] text-white py-2 px-5 hover:text-white" : "hover:text-[#0062AD]"
-                  }`}
+                  `text-[18px] font-medium text-[#272F3A] ${
+                    isActive
+                      ? "rounded-[25px] bg-[#0062AD] px-5 py-2 text-white hover:text-white"
+                      : "hover:text-[#0062AD]"
+                  }`
+                }
               >
                 {t.navbar.contact}
               </NavLink>
@@ -98,12 +119,17 @@ function Navbar() {
                 }}
               >
                 <SelectTrigger
-                  className="mt-0 w-[105px] cursor-pointer rounded-[26px] border-[#EFEFEF] border-1 px-3 py-1 text-[18px] text-black shadow-none ring-0 focus-visible:ring-0"
+                  className="mt-0 w-[105px] cursor-pointer rounded-[26px] border-1 border-[#EFEFEF] px-3 py-1 text-[18px] text-black shadow-none ring-0 focus-visible:ring-0"
                   downIconClasses="text-black"
                 >
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-darkBlue border-0 text-white">
+                <SelectContent
+                  className="bg-darkBlue absolute top-full z-50 mt-2 border-0 text-white shadow-lg"
+                  side="bottom"
+                  sideOffset={4}
+                  position="popper"
+                >
                   <SelectGroup>
                     <SelectItem value="uz">
                       <img src={UzFlag} alt="Uzbekistan Flag" />
@@ -138,7 +164,7 @@ function Navbar() {
             className="bg-darkBlue flex w-full flex-col justify-between border-0 sm:max-w-sm"
             closeIconClasses="text-white opacity-100 w-6 h-6 cursor-pointer"
           >
-            <SheetHeader className="p-4 pt-9">
+            <SheetHeader className="p-4 pt-0">
               <SheetTitle className="text-[23.21px] font-semibold text-white">
                 {t.navbar.logoText}
               </SheetTitle>

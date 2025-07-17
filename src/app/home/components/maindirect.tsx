@@ -78,7 +78,7 @@ export default function Maindirect() {
           className="h-[500px]"
         >
           {videoData.map((item, index) => (
-            <SwiperSlide key={index} className="flex justify-center ml-8">
+            <SwiperSlide key={index} className="flex justify-center ">
               <div className="relative h-[480px] w-[350px]">
                 <div className="absolute h-full w-full overflow-hidden rounded-xl">
                   <Videos
