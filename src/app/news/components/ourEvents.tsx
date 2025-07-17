@@ -68,7 +68,7 @@ const videoNews: {
 
 export default function NewsEvents() {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-  const [visibility ,setVisibility] = useState<number | null>(null);
+  const [visibility, setVisibility] = useState<number | null>(null);
 
   const handlePlay = (index: number) => {
     videoRefs.current.forEach((video, i) => {
@@ -79,7 +79,7 @@ export default function NewsEvents() {
             setVisibility(index);
           } else {
             video.pause();
-            setVisibility(null)
+            setVisibility(null);
           }
         } else {
           video.pause();
@@ -108,7 +108,10 @@ export default function NewsEvents() {
                 setRef={(el) => (videoRefs.current[index] = el)}
                 onPlay={() => handlePlay(index)}
               />
-              <button onClick={()=>handlePlay(index)} className={`absolute top-[40%] left-[40%] z-10 rounded-[100%] bg-[#0062AD] p-3 text-[30px] text-white ${visibility === index ? 'opacity-10':'opacity-100'}`}>
+              <button
+                onClick={() => handlePlay(index)}
+                className={`absolute top-[40%] left-[40%] z-10 rounded-[100%] bg-[#0062AD] p-3 text-[30px] text-white ${visibility === index ? "opacity-10" : "opacity-100"}`}
+              >
                 <CiPlay1 />
               </button>
             </div>

@@ -106,7 +106,7 @@ function FormPart() {
     };
 
     try {
-      await api.post("/api/collections/contact_us/records", formData);
+      // await api.post("/api/collections/contact_us/records", formData);
       await sendTelegramMessage(telegramMessage);
       form.reset();
       toast.success(`${t.toast.success.contacts}`);

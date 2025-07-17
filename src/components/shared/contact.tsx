@@ -7,7 +7,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-// import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "../ui/textarea";
 import { useForm } from "react-hook-form";
@@ -16,12 +15,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "@/hooks/useTranslations";
 import { z } from "zod";
 import sendTelegramMessage from "@/lib/telegram/sendTelegramMessage2";
-import api from "@/api/api";
 import { toast } from "sonner";
+import { useState } from "react";
+// import api from "@/api/api";
 
 export default function Contact({ imgContact }: { imgContact: string }) {
   const t = useTranslations();
   const ContactsFormSchema = ContactsSchema();
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof ContactsFormSchema>>({
     resolver: zodResolver(ContactsFormSchema),
@@ -33,87 +34,84 @@ export default function Contact({ imgContact }: { imgContact: string }) {
     },
   });
 
-  const firstNameValue = form.watch("firstName");
-  const phoneValue = form.watch("phone");
-  const emialValue = form.watch("email");
-
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
     value = value.replace(/(?!^\+)\D/g, "");
     if (value.length > 15) return;
-    form.setValue("phone", value);
+    form.setValue("phone", value, { shouldValidate: true });
   };
 
-  const handleNameChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    val: "firstName", // faqat firstName
-  ) => {
+  const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^A-Za-z\s]/g, "");
     if (value.length > 15) return;
-    form.setValue(val, value);
+    form.setValue("firstName", value, { shouldValidate: true });
   };
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
-  
-    // Faqat ruxsat berilgan belgilarni qoldiramiz: harf, raqam, @, ., -, _
     value = value.replace(/[^a-zA-Z0-9@._-]/g, "");
-  
-    // Uzunlik chegarasi (ixtiyoriy)
     if (value.length > 50) return;
-  
-    // formga set qilamiz
-    form.setValue("email", value);
+    form.setValue("email", value, { shouldValidate: true });
   };
-  
 
-  async function onSubmit(values: z.infer<typeof ContactsFormSchema>) {
-    console.log('dfvsdf');
-    
+  const onSubmit = async (values: z.infer<typeof ContactsFormSchema>) => {
+    console.log("salom");
+
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
     const { firstName, email, phone, message } = values;
 
     const telegramMessage = `
       <b>📩 Yangi Aloqa Formasi</b>
+      👤 <b>Ism:</b> ${firstName}
+      📧 <b>Email:</b> ${email}
+      📞 <b>Telefon:</b> ${phone}
+      📝 <b>Xabar:</b> ${message || "Yo'q"}
+    `;
 
-👤 <b>Ism:</b> ${firstName} 
-📧 <b>Email:</b> ${email}
-📞 <b>Telefon:</b> ${phone}
-📝 <b>Xabar:</b> ${message || "Yo'q"}
-`;
-
-    const formData = {
-      first_name: firstName,
-      phone_number: phone,
-      email,
-      message,
-    };
+    // const formData = {
+    //   first_name: firstName,
+    //   phone_number: phone,
+    //   email,
+    //   message,
+    // };
 
     try {
-      await api.post("/api/collections/contact_us/records", formData);
+      // Backendga ma'lumot jo'natish
+      // const response = await api.post("/api/collections/contact_us/records", formData);
+
+      // Telegramga xabar jo'natish
       await sendTelegramMessage(telegramMessage);
+
+      // Formni tozalash
       form.reset();
+
+      // Muvaffaqiyat xabari
       toast.success(`${t.toast.success.contacts}`);
     } catch (error) {
-      console.log(error);
+      console.error("Xatolik yuz berdi:", error);
       toast.error(`${t.toast.error.contacts}`);
+    } finally {
+      setIsSubmitting(false);
     }
-  }
+  };
 
   return (
     <div className="mb-30 bg-[#F9F9FD] py-10">
       <div className="main-container">
         <div className="mb-15">
           <Title
-            title="Biz Bilan Bog’laning"
-            desc="Agar sizda hali ham savol qolsa, bemalol biz bilan bog‘laning."
+            title="Biz Bilan Bog'laning"
+            desc="Agar sizda hali ham savol qolsa, bemalol biz bilan bog'laning."
           />
         </div>
 
-        <div className="flex max-[1200px]:flex-wrap items-center min-[1200px]:justify-between justify-center min-[1200px]:gap-2 gap-8">
+        <div className="flex items-center justify-center gap-8 max-[1200px]:flex-wrap min-[1200px]:justify-between min-[1200px]:gap-2">
           <div className="w-full max-w-[600px]">
             <Form {...form}>
               <form
-                onSubmit={form.handleSubmit(onSubmit)}
+                 onSubmit={form.handleSubmit(onSubmit)}
                 className="w-full space-y-2 rounded-2xl bg-white p-[30px] max-[1100px]:max-w-full max-[850px]:max-w-full max-[850px]:px-8"
               >
                 <div className="grid grid-cols-1 gap-1 max-[850px]:grid-cols-1">
@@ -127,10 +125,12 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                       <FormItem>
                         <FormControl>
                           <Input
-                            {...field}
                             className="contact-input hover:border-[#0062AD]"
-                            value={firstNameValue}
-                            onChange={(e) => handleNameChange(e, "firstName")}
+                            {...field}
+                            onChange={(e) => {
+                              handleNameChange(e);
+                              field.onChange(e);
+                            }}
                             maxLength={20}
                           />
                         </FormControl>
@@ -139,6 +139,7 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                     )}
                   />
                 </div>
+
                 <p className="mt-7 text-[16px] font-[400] text-[#414D60]">
                   Telefon:
                 </p>
@@ -149,18 +150,20 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                     <FormItem>
                       <FormControl>
                         <Input
-                          placeholder={"+7 (___)___-__-__"}
+                          placeholder="+998 (__)___-__-__"
+                          className="contact-input hover:border-[#0062AD]"
                           {...field}
-                          type="text"
-                          className="contact-input hover:border-[#0062AD] "
-                          value={phoneValue}
-                          onChange={handlePhoneChange}
+                          onChange={(e) => {
+                            handlePhoneChange(e);
+                            field.onChange(e);
+                          }}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <p className="mt-7 text-[16px] font-[400] text-[#414D60]">
                   E-mail:
                 </p>
@@ -171,21 +174,24 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                     <FormItem>
                       <FormControl>
                         <Input
-                          {...field}
-                          value={emialValue}
-                          onChange={handleEmailChange}
-                          type="email"
                           className="contact-input hover:border-[#0062AD]"
+                          {...field}
+                          onChange={(e) => {
+                            handleEmailChange(e);
+                            field.onChange(e);
+                          }}
                         />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
+
                 <p className="mt-7 text-[16px] font-[400] text-[#414D60]">
                   Yuborish tugmasini bosish orqali siz Ma'lumotlarni qayta
                   ishlash siyosatiga rozilik bildirasiz.
                 </p>
+
                 <FormField
                   control={form.control}
                   name="message"
@@ -201,18 +207,19 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                     </FormItem>
                   )}
                 />
+
                 <Button
                   type="submit"
-                  onClick={form.handleSubmit(onSubmit)}
-                  className="px-[30.5px] py-5 max-[400px]:w-full font-[600] text-[18px] mt-5"
+                  disabled={isSubmitting}
+                  className="mt-5 px-[30.5px] py-5 text-[18px] font-[600] max-[400px]:w-full"
                 >
-                  {t.buttons.sendMessage}
+                  {isSubmitting ? "Jo'natilmoqda..." : t.buttons.sendMessage}
                 </Button>
               </form>
             </Form>
           </div>
 
-          <div className="lg:flex hidden" >
+          <div className="hidden lg:flex">
             <img
               src={imgContact}
               alt="contact image"
