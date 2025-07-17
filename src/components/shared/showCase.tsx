@@ -4,6 +4,7 @@ import { HashLink } from "react-router-hash-link";
 
 export default function ShowCase({ title, desc, img , justify_value }: IShowCase) {
   const { lang } = useParams();
+  // hello everyone
   return (
     <div
       className={`-bg-[position:0px_100px] h-[800px] bg-cover bg-no-repeat max-lg:bg-center flex items-start ${justify_value}`}
