@@ -41,6 +41,7 @@ function Navbar() {
 
   return (
     <div className="absolute top-0 left-0 z-10 w-full">
+      <motion.div initial={{height:'100%'}} animate={{height:'0'}} transition={{duration:1}} className="absolute z-20 w-full h-0 bg-[#0062AD] " ></motion.div>
       <nav className="bg-none pt-8 max-[400px]:pt-2 min-[380px]:p-4 min-[1000px]:pt-12">
         <div className="main-container flex items-center justify-between max-sm:p-2">
           <Link

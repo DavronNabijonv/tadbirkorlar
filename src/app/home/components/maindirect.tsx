@@ -8,8 +8,10 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import Title from "@/components/shared/Title";
-import './home.css';
-
+import "./home.css";
+// FadeInSection.tsx
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 const videoData = [
   { vd_src: w1, desc: "Ta’lim va malaka oshirish" },
@@ -26,6 +28,11 @@ export default function Maindirect() {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
   const [swiper, setSwiper] = useState<any>(null);
 
+  const { ref, inView } = useInView({
+    triggerOnce: true, // faqat bir marta trigger bo‘ladi
+    threshold: 0.4, // 20% ko‘rinsa yetarli
+  });
+
   // Navigation tugmalarini yangilash
   useEffect(() => {
     if (swiper && swiper.params.navigation) {
@@ -39,7 +46,7 @@ export default function Maindirect() {
   const handlePlay = (index: number) => {
     videoRefs.current.forEach((video, i) => {
       if (!video) return;
-      
+
       if (i === index) {
         if (video.paused) {
           video.play();
@@ -61,7 +68,13 @@ export default function Maindirect() {
         desc="Platformamiz orqali siz nafaqat xalqaro aloqalarni o‘rganasiz, balki amaliyotga ham qo‘llasiz."
       />
 
-      <div className="relative mt-20 ">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 1 } : {}}
+        transition={{ duration: 3, delay: 0 }}
+        className="relative mt-20"
+      >
         <Swiper
           slidesPerView={1}
           loop={true}
@@ -75,11 +88,11 @@ export default function Maindirect() {
             1200: { slidesPerView: 3 },
           }}
           modules={[Navigation]}
-          className=" home_swiper h-[500px] max-sm:h-[400px] flex items-center justify-center gap-10 "
+          className="home_swiper flex h-[500px] items-center justify-center gap-10 max-sm:h-[400px]"
         >
           {videoData.map((item, index) => (
-            <SwiperSlide key={index} className="flex justify-center ">
-              <div className="relative h-[480px] w-[350px] max-sm:w-[280px] max-sm:h-[400px] ">
+            <SwiperSlide key={index} className="flex justify-center">
+              <div className="relative h-[480px] w-[350px] max-sm:h-[400px] max-sm:w-[280px]">
                 <div className="absolute h-full w-full overflow-hidden rounded-xl">
                   <Videos
                     index={index}
@@ -94,8 +107,10 @@ export default function Maindirect() {
                 </p>
                 <button
                   onClick={() => handlePlay(index)}
-                  className={`absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-[#0062AD] p-3 text-[30px] text-white transition-opacity duration-300 ${
-                    playingIndex === index ? 'opacity-0 hover:opacity-70' : 'opacity-100'
+                  className={`absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-[#0062AD] p-3 text-[30px] text-white transition-opacity duration-300 ${
+                    playingIndex === index
+                      ? "opacity-0 hover:opacity-70"
+                      : "opacity-100"
                   }`}
                 >
                   <CiPlay1 />
@@ -119,7 +134,7 @@ export default function Maindirect() {
             <FaArrowRight />
           </button>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
