@@ -95,13 +95,13 @@ export default function NewsEvents() {
         desc="“Business Diplomatia” platformasi dunyo bo‘ylab faoliyat yuritayotgan ishonchli tashkilotlar, universitetlar, kompaniyalar va inkubatsion markazlar bilan hamkorlikda ishlaydi."
       />
 
-      <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 place-items-center md:grid-cols-2 lg:grid-cols-3">
+      <div className="mx-auto grid w-full max-w-[1400px] grid-cols-1 place-items-center min-[950px]:grid-cols-2 min-xl:grid-cols-3">
         {videoNews.map((item, index) => (
           <div
             key={index}
-            className="mt-15 flex h-[515px] w-[413px] flex-col items-center justify-between gap-3 rounded-[8px] p-3 shadow-[0_1px_35px_rgba(0,0,0,0.3)]"
+            className="mt-15 flex sm:h-[515px] sm:w-[413px] h-[400px] w-[300px] flex-col items-center justify-between sm:gap-3 gap-1 rounded-[8px] p-3 shadow-[0_1px_35px_rgba(0,0,0,0.3)]"
           >
-            <div className="rounded-8px relative h-[279px] w-[381px]">
+            <div className="rounded-8px relative sm:h-[279px] h-[170px] sm:w-[381px] w-[280px]">
               <Videos
                 index={index}
                 src={item.videos}

@@ -112,7 +112,7 @@ export default function Contact({ imgContact }: { imgContact: string }) {
             <Form {...form}>
               <form
                  onSubmit={form.handleSubmit(onSubmit)}
-                className="w-full space-y-2 rounded-2xl bg-white p-[30px] max-[1100px]:max-w-full max-[850px]:max-w-full max-[850px]:px-8"
+                className="w-full space-y-2 rounded-2xl bg-white  min-sm:p-[30px] py-3 max-[1100px]:max-w-full max-[850px]:max-w-full max-[850px]:px-4"
               >
                 <div className="grid grid-cols-1 gap-1 max-[850px]:grid-cols-1">
                   <p className="text-[16px] font-[400] text-[#414D60]">

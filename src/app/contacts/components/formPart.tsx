@@ -118,8 +118,8 @@ function FormPart() {
 
   return (
     <div className="bg-[#F9F9FD]">
-      <div className="main-container py-10 ">
-        <div className="border-1 border-[#E4E4E4] bg-white my-20 py-10 ">
+      <div className="main-container sm:py-10 py-5 ">
+        <div className="border-1 border-[#E4E4E4] bg-white sm:my-20 my-5 sm:py-10 py-5 ">
 
           <Title
             title="Bizning hamkorlarimiz"
@@ -127,7 +127,7 @@ function FormPart() {
           />
 
           {/* form part */}
-          <div className="main-container mt-15 max-md:pb-20">
+          <div className="main-container mt-15 max-md:pb-20 max-sm:pb-10">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export default function OurEvents() {
   return (
-    <div className="mb-30">
+    <div className="md:mb-30 mb-10 ">
       <Title
         title="Bizning Tadbirlarimiz"
         desc="“Business Diplomatia” platformasi dunyo bo‘ylab faoliyat yuritayotgan ishonchli tashkilotlar, universitetlar, kompaniyalar va inkubatsion markazlar bilan hamkorlikda ishlaydi."
