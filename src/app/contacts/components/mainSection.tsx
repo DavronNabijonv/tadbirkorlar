@@ -35,7 +35,7 @@ export default function MainSection() {
         </div>
 
         {/* right part */}
-        <div className="absolute min-[850px]:top-20 md:-top-[100px] -top-[50px] min-[1100px]:right-30 right-0 z-20 flex w-[260px] flex-col items-start justify-baseline gap-5">
+        <div className="absolute min-[850px]:top-20 -top-[50px] min-[1100px]:right-30 right-0 z-20 flex w-[260px] flex-col items-start justify-baseline gap-5">
 
           <img src={right} alt="right icons" className="min-[850px]:flex hidden"  />
 
@@ -58,7 +58,7 @@ export default function MainSection() {
         </div>
 
         {/* left part */}
-        <div className="absolute min-[850px]:bottom-20 md:-bottom-[100px] bottom-0 min-[1100px]:left-30 left-0 z-20 flex w-[260px] flex-col items-end justify-baseline gap-5">
+        <div className="absolute min-[850px]:bottom-20 bottom-0 min-[1100px]:left-30 left-0 z-20 flex w-[260px] flex-col items-end justify-baseline gap-5">
 
         <div className="flex flex-col items-center gap-2 rounded-[20px] bg-white p-5 shadow-xl/30" >
             <img src={comp} alt="message icon" className="" />
