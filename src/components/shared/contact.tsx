@@ -17,12 +17,19 @@ import { z } from "zod";
 import sendTelegramMessage from "@/lib/telegram/sendTelegramMessage2";
 import { toast } from "sonner";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 // import api from "@/api/api";
 
 export default function Contact({ imgContact }: { imgContact: string }) {
   const t = useTranslations();
   const ContactsFormSchema = ContactsSchema();
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
 
   const form = useForm<z.infer<typeof ContactsFormSchema>>({
     resolver: zodResolver(ContactsFormSchema),
@@ -108,11 +115,17 @@ export default function Contact({ imgContact }: { imgContact: string }) {
         </div>
 
         <div className="flex items-center justify-center gap-8 max-[1200px]:flex-wrap min-[1200px]:justify-between min-[1200px]:gap-2">
-          <div className="w-full max-w-[600px]">
+          <motion.div
+            ref={ref}
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={inView ? { scale: 1, opacity: 1 } : {}}
+            transition={{ duration: 1 }}
+            className="w-full max-w-[600px]"
+          >
             <Form {...form}>
               <form
-                 onSubmit={form.handleSubmit(onSubmit)}
-                className="w-full space-y-2 rounded-2xl bg-white  min-sm:p-[30px] py-3 max-[1100px]:max-w-full max-[850px]:max-w-full max-[850px]:px-4"
+                onSubmit={form.handleSubmit(onSubmit)}
+                className="w-full space-y-2 rounded-2xl bg-white py-3 max-[1100px]:max-w-full max-[850px]:max-w-full max-[850px]:px-4 min-sm:p-[30px]"
               >
                 <div className="grid grid-cols-1 gap-1 max-[850px]:grid-cols-1">
                   <p className="text-[16px] font-[400] text-[#414D60]">
@@ -217,15 +230,21 @@ export default function Contact({ imgContact }: { imgContact: string }) {
                 </Button>
               </form>
             </Form>
-          </div>
+          </motion.div>
 
-          <div className="hidden lg:flex">
+          <motion.div
+            ref={ref}
+            initial={{opacity:0,x:90}}
+            animate={inView ? {opacity:1,x:0} : {}}
+            transition={{ duration: 1 }}
+            className="hidden lg:flex"
+          >
             <img
               src={imgContact}
               alt="contact image"
               className="h-[600px] max-w-[600px] rounded-[8px] object-cover object-left-top"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
