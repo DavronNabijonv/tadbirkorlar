@@ -1,7 +1,7 @@
 import { w1, w2, w3, w4, w5, w6, w7, w8, w9 } from "@/assets";
 import Title from "@/components/shared/Title";
 import { useRef, useState } from "react";
-import type { VideoNewsItem } from "@/types"; // optional
+import type { VideoNewsItem } from "@/types"; // optional umuman optio
 import VideoCard from "@/components/shared/videoCard";
 
 const videoNews: VideoNewsItem[] = [
