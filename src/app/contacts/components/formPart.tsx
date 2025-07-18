@@ -20,11 +20,21 @@ import { ContactPageSchema } from "@/lib/validation";
 import { sendTelegramMessage } from "@/lib/telegram/sendTelegramMessage";
 import { toast } from "sonner";
 import Title from "@/components/shared/Title";
+
+// FadeInSection.tsx
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
 // import api from "@/api/api";
 
 function FormPart() {
   const ContactsSchema = ContactPageSchema();
   const t = useTranslations();
+
+  const { ref, inView } = useInView({
+    triggerOnce: true, // faqat bir marta trigger bo‘ladi
+    threshold: 0.4, // 20% ko‘rinsa yetarli
+  });
 
   const form = useForm<z.infer<typeof ContactsSchema>>({
     resolver: zodResolver(ContactsSchema),
@@ -63,13 +73,13 @@ function FormPart() {
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
-  
+
     // Faqat ruxsat berilgan belgilarni qoldiramiz: harf, raqam, @, ., -, _
     value = value.replace(/[^a-zA-Z0-9@._-]/g, "");
-  
+
     // Uzunlik chegarasi (ixtiyoriy)
     if (value.length > 50) return;
-  
+
     // formga set qilamiz
     form.setValue("email", value);
   };
@@ -79,8 +89,6 @@ function FormPart() {
     if (value.length > 30) return; // lokatsiya odatda uzunroq bo‘ladi
     form.setValue("location", value);
   };
-  
-  
 
   async function onSubmit(values: z.infer<typeof ContactsSchema>) {
     const { firstName, lastName, message, phone, privacy, email, location } =
@@ -118,9 +126,8 @@ function FormPart() {
 
   return (
     <div className="bg-[#F9F9FD]">
-      <div className="main-container sm:py-10 py-5 ">
-        <div className="border-1 border-[#E4E4E4] bg-white sm:my-20 my-5 sm:py-10 py-5 ">
-
+      <div className="main-container py-5 sm:py-10">
+        <div className="my-5 border-1 border-[#E4E4E4] bg-white py-5 sm:my-20 sm:py-10">
           <Title
             title="Bizning hamkorlarimiz"
             desc="“Business Diplomatia” platformasi dunyo bo‘ylab faoliyat yuritayotgan ishonchli tashkilotlar, universitetlar, kompaniyalar va inkubatsion markazlar bilan hamkorlikda ishlaydi."
@@ -134,106 +141,165 @@ function FormPart() {
                 className="space-y-[30px]"
               >
                 <div className="grid grid-cols-2 items-start gap-5 max-md:grid-cols-1">
-                  <FormField
-                    control={form.control}
-                    name="lastName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-[#1E242C] text-[20px] font-[600]">
-                          {t.contactsPage.form.title.lastName}
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder={
-                              t.contactsPage.form.placeholders.lastName
-                            }
-                            {...field}
-                            className="bg-[#F2F2F2] text-[18px] text-[#666666] font-[500] border-1 border-[#E4E4E4] h-[50px] py-2 "
-                            value={lastNameValue}
-                            onChange={(e) => handleNameChange(e, "lastName")}
-                            maxLength={20}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="firstName"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-[#1E242C] text-[20px] font-[600]">
-                          {t.contactsPage.form.title.firstName}
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder={
-                              t.contactsPage.form.placeholders.firstName
-                            }
-                            {...field}
-                            className="bg-[#F2F2F2] text-[18px] text-[#666666] font-[500] border-1 border-[#E4E4E4] h-[50px] py-2 "
-                            value={firstNameValue}
-                            onChange={(e) => handleNameChange(e, "firstName")}
-                            maxLength={20}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-[#1E242C] text-[20px] font-[600]">
-                          {t.contactsPage.form.title.emial}
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder={t.contactsPage.form.placeholders.email}
-                            {...field}
-                            className="bg-[#F2F2F2] text-[18px] text-[#666666] font-[500] border-1 border-[#E4E4E4] h-[50px] py-2 "
-                            value={emailValue}
-                            onChange={handleEmailChange}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                  <FormField
-                    control={form.control}
-                    name="phone"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-[#1E242C] text-[20px] font-[600]">
-                          {t.contactsPage.form.title.phone}
-                        </FormLabel>
-                        <FormControl>
-                          <Input
-                            placeholder={
-                              t.contactsPage.form.placeholders.phone
-                            }
-                            {...field}
-                            className="bg-[#F2F2F2] text-[18px] text-[#666666] font-[500] border-1 border-[#E4E4E4] h-[50px] py-2 "
-                            value={phoneValue}
-                            onChange={handlePhoneChange}
-                          />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
+                  <motion.div
+                    ref={ref}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{
+                      duration: 0.6,
+                      delay: 1 * 0.2,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <FormField
+                      control={form.control}
+                      name="lastName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-[20px] font-[600] text-[#1E242C]">
+                            {t.contactsPage.form.title.lastName}
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder={
+                                t.contactsPage.form.placeholders.lastName
+                              }
+                              {...field}
+                              className="h-[50px] border-1 border-[#E4E4E4] bg-[#F2F2F2] py-2 text-[18px] font-[500] text-[#666666]"
+                              value={lastNameValue}
+                              onChange={(e) => handleNameChange(e, "lastName")}
+                              maxLength={20}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </motion.div>
+
+                  <motion.div
+                    ref={ref}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{
+                      duration: 0.6,
+                      delay: 2 * 0.2,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <FormField
+                      control={form.control}
+                      name="firstName"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-[20px] font-[600] text-[#1E242C]">
+                            {t.contactsPage.form.title.firstName}
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder={
+                                t.contactsPage.form.placeholders.firstName
+                              }
+                              {...field}
+                              className="h-[50px] border-1 border-[#E4E4E4] bg-[#F2F2F2] py-2 text-[18px] font-[500] text-[#666666]"
+                              value={firstNameValue}
+                              onChange={(e) => handleNameChange(e, "firstName")}
+                              maxLength={20}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </motion.div>
+
+                  <motion.div
+                    ref={ref}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{
+                      duration: 0.6,
+                      delay: 3 * 0.2,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-[20px] font-[600] text-[#1E242C]">
+                            {t.contactsPage.form.title.emial}
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder={
+                                t.contactsPage.form.placeholders.email
+                              }
+                              {...field}
+                              className="h-[50px] border-1 border-[#E4E4E4] bg-[#F2F2F2] py-2 text-[18px] font-[500] text-[#666666]"
+                              value={emailValue}
+                              onChange={handleEmailChange}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </motion.div>
+
+                  <motion.div
+                    ref={ref}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={inView ? { opacity: 1, y: 0 } : {}}
+                    transition={{
+                      duration: 0.6,
+                      delay: 4 * 0.2,
+                      ease: "easeOut",
+                    }}
+                  >
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel className="text-[20px] font-[600] text-[#1E242C]">
+                            {t.contactsPage.form.title.phone}
+                          </FormLabel>
+                          <FormControl>
+                            <Input
+                              placeholder={
+                                t.contactsPage.form.placeholders.phone
+                              }
+                              {...field}
+                              className="h-[50px] border-1 border-[#E4E4E4] bg-[#F2F2F2] py-2 text-[18px] font-[500] text-[#666666]"
+                              value={phoneValue}
+                              onChange={handlePhoneChange}
+                            />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </motion.div>
                 </div>
 
-                <FormField
+                <motion.div
+                  ref={ref}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{
+                    duration: 0.6,
+                    delay: 5 * 0.2,
+                    ease: "easeOut",
+                  }}
+                >
+                  <FormField
                     control={form.control}
                     name="location"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-[#1E242C] text-[20px] font-[600]">
+                        <FormLabel className="text-[20px] font-[600] text-[#1E242C]">
                           {t.contactsPage.form.title.location}
                         </FormLabel>
                         <FormControl>
@@ -242,7 +308,7 @@ function FormPart() {
                               t.contactsPage.form.placeholders.location
                             }
                             {...field}
-                            className="bg-[#F2F2F2] text-[18px] text-[#666666] font-[500] border-1 border-[#E4E4E4] h-[50px] py-2 "
+                            className="h-[50px] border-1 border-[#E4E4E4] bg-[#F2F2F2] py-2 text-[18px] font-[500] text-[#666666]"
                             value={locationValue}
                             onChange={handleLocationChange}
                           />
@@ -251,26 +317,40 @@ function FormPart() {
                       </FormItem>
                     )}
                   />
+                </motion.div>
 
-                <FormField
-                  control={form.control}
-                  name="message"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-[#1E242C] text-[20px] font-[600]">
-                        {t.contactsPage.form.title.message}
-                      </FormLabel>
-                      <FormControl>
-                        <Textarea
-                          placeholder={t.contactsPage.form.placeholders.message}
-                          {...field}
-                          className="contacts-input !h-[122px] font-urbanist resize-none bg-[#F2F2F2] text-[18px] text-[#666666] font-[500] border-1 border-[#E4E4E4]"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+                <motion.div
+                  ref={ref}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{
+                    duration: 0.6,
+                    delay: 6 * 0.2,
+                    ease: "easeOut",
+                  }}
+                >
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-[20px] font-[600] text-[#1E242C]">
+                          {t.contactsPage.form.title.message}
+                        </FormLabel>
+                        <FormControl>
+                          <Textarea
+                            placeholder={
+                              t.contactsPage.form.placeholders.message
+                            }
+                            {...field}
+                            className="contacts-input font-urbanist !h-[122px] resize-none border-1 border-[#E4E4E4] bg-[#F2F2F2] text-[18px] font-[500] text-[#666666]"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </motion.div>
 
                 <div className="flex items-start justify-between gap-8 max-md:flex-col max-md:items-start">
                   <FormField
@@ -304,7 +384,6 @@ function FormPart() {
               </form>
             </Form>
           </div>
-
         </div>
       </div>
     </div>

@@ -41,4 +41,13 @@ export interface IChanceIcon {
   desc?:string;
 }
 
+// types.ts
+export interface VideoNewsItem {
+  videos: string;
+  title: string;
+  desc: string;
+  links: string;
+}
+
+
 export type IExpandType<K extends string> = Record<K, ILangTypes>;
