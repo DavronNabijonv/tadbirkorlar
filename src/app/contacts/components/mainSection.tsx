@@ -10,7 +10,7 @@ import {
 import Title from "@/components/shared/Title";
 import { useTranslations } from "@/hooks/useTranslations";
 // FadeInSection.tsx
-import { animate, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 export default function MainSection() {
