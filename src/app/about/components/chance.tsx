@@ -47,8 +47,8 @@ export default function Chance() {
         <div className="grid h-[300px] w-full max-w-[500px] grid-cols-2 grid-rows-2 gap-4 md:h-[600px]">
           <motion.div
             ref={ref}
-            initial={{ scale: 0.5 , opacity:0 }}
-            animate={inView ? { scale: 1 , opacity:1 } : {}}
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={inView ? { scale: 1, opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.1 * 1 }}
             className="h-full w-full rounded-xl bg-cover bg-center bg-no-repeat object-cover"
             style={{
@@ -60,8 +60,8 @@ export default function Chance() {
           </motion.div>
           <motion.div
             ref={ref}
-            initial={{ scale: 0.5,opacity:0 }}
-            animate={inView ? { scale: 1,opacity:1 } : {}}
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={inView ? { scale: 1, opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.1 * 2 }}
             className="row-span-2 h-full rounded-xl bg-cover bg-center bg-no-repeat lg:w-[350px]"
             style={{
@@ -73,8 +73,8 @@ export default function Chance() {
           </motion.div>
           <motion.div
             ref={ref}
-            initial={{ scale: 0.5 ,opacity:0}}
-            animate={inView ? { scale: 1,opacity:1 } : {}}
+            initial={{ scale: 0.5, opacity: 0 }}
+            animate={inView ? { scale: 1, opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.1 * 3 }}
             className="h-full w-full rounded-xl bg-cover bg-center bg-no-repeat object-cover"
             style={{
