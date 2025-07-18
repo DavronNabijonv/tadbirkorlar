@@ -15,7 +15,7 @@ import { useInView } from "react-intersection-observer";
 
 export default function MainSection() {
   const t = useTranslations();
-
+  // vashe
   // Circle uchun:
   const { ref: circle1, inView: inViewCircle } = useInView({
     triggerOnce: true,
