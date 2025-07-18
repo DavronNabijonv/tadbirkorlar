@@ -35,12 +35,12 @@ function HomeHero() {
           transition={{ duration: 1 }}
           href="#home_contact"
         >
-          <Button className="h-[50px] w-[305px] rounded-[16px] text-[24px] hover:border-1 hover:border-[#848D9B] hover:bg-white hover:text-[#848D9B]">
+          <Button className="h-[50px] w-[305px] hover:cursor-pointer rounded-[16px] text-[24px] hover:border-1 hover:border-[#848D9B] hover:bg-white hover:text-[#848D9B]">
             Batafsil o'rganish
           </Button>
         </motion.a>
         <Link to={`/${lang}/contacts`}>
-          <Button className="h-[50px] w-[305px] rounded-[16px] border-1 border-[#848D9B] bg-white text-[24px] text-[#848D9B] hover:border-0 hover:bg-[#0062AD] hover:text-white">
+          <Button className="h-[50px] hover:cursor-pointer w-[305px] rounded-[16px] border-1 border-[#848D9B] bg-white text-[24px] text-[#848D9B] hover:border-0 hover:bg-[#0062AD] hover:text-white">
             Qo'shilish
           </Button>
         </Link>
